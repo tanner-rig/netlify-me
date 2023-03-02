@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [joke, setJoke] = useState("");
+
+  const getJoke = async () => {
+    await fetch("https://api.chucknorris.io/jokes/random").then((data) =>
+      data.json().then((res) => setJoke(res.value))
+    );
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={getJoke}>Get Joke</button>
+      {joke && (
+        <>
+          <h3>Here's your Chuck Norris fact ya filthy animal:</h3>
+          <h2> {joke}</h2>
+        </>
+      )}
     </div>
   );
 }
