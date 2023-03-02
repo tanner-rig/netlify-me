@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import image from "./image.gif";
 
 function App() {
   const [joke, setJoke] = useState("");
@@ -16,7 +17,8 @@ function App() {
       {joke && (
         <>
           <h3>Here's your Chuck Norris fact ya filthy animal:</h3>
-          <h2> {joke}</h2>
+          <h2 style={{ color: "blue" }}>{joke}</h2>
+          <img src={image} alt="chuck norris" />
         </>
       )}
     </div>
